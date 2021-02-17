@@ -1,14 +1,15 @@
 # README
 
 Ett API för en filmbutik.
-Den innehåller inget grafiskt gränssnitt utan alla funktioner är kollade med "Postman" (https://www.postman.com/).
+Den innehåller inget grafiskt gränssnitt utan data skickas/returneras i json format
+Alla funktioner är kollade med "Postman" (https://www.postman.com/).
 
 Man kan skapa, ta bort, ändra kategori och ändra pris på artiklar.
 Man kan skapa/ ta bort kunder eller ändra deras poäng och address.
 
 Vid försäljning genereras ett verifikationsnummer som kan användas till att få fram en order/faktura med information om de artiklar som köptes och kunden om denne är registrerad.
 
-URL (localhost)
+URL (http://127.0.0.1:3000/api/v1/)
 
 GET:
 
@@ -18,7 +19,7 @@ http://127.0.0.1:3000/api/v1/customers/ En lista på kunder
 http://127.0.0.1:3000/api/v1/customers/1 Visar info om kund med id=1
 
 http://127.0.0.1:3000/api/v1/articles/1 Visar information om artikel 
-http://127.0.0.1:3000/api/v1/articles/find/ Söker artikel. Fungerar på artikelnummer och namn.
+http://127.0.0.1:3000/api/v1/articles/find/ Söker artikel. Fungerar på både artikelnummer och namn.
 
 http://127.0.0.1:3000/api/v1/orders/12d4970b-ecf9-4dd5-b2c1-2408eed052a4 Visar order med verifikationsnummer =12d4970b-ecf9-4dd5-b2c1-2408eed052a4
 
