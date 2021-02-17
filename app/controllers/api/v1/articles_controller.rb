@@ -2,6 +2,7 @@ class Api::V1::ArticlesController < ApplicationController
 
   def edit
     article=Article.find_by(article_number: params[:id])
+
     if article !=nil
       if article.update(update_params)
         render json: {status: 'SUCCESS', message:'Updated article ',data:article},status: :ok
@@ -15,6 +16,7 @@ class Api::V1::ArticlesController < ApplicationController
 
   def show
     article = Article.where(article_number: params[:id])
+
     if article.count>0
     render json: {status: 'SUCCESS', message:'Loaded article ',data:article},status: :ok
     else
@@ -24,6 +26,7 @@ class Api::V1::ArticlesController < ApplicationController
 
   def destroy
     article=Article.find_by(article_number: params[:id])
+
     if article
       article.destroy
       render json: {status: 'SUCCESS', message:'Article deleted',data:article},status: :ok
@@ -34,16 +37,18 @@ class Api::V1::ArticlesController < ApplicationController
 
   def find_article
      # Databas View
+     # Om id är Numerisk söker vi på artikelnummer, annars på eller del av namnet
     if params[:id].to_i>0
      article = ViewArticle.where(article_number: params[:id])
     else
       article=ViewArticle.where("name LIKE :query", query: "%#{params[:id]}%")
     end
-     if article.count>0
-     render json: {status: 'SUCCESS', message:'Loaded article ',data:article},status: :ok
-     else
-       render json: {status: 'EMPTY', message:"No article with article number or name like: " + params[:id],data:article},status: :not_found
-     end
+    
+    if article.count>0
+    render json: {status: 'SUCCESS', message:'Loaded article ',data:article},status: :ok
+    else
+      render json: {status: 'EMPTY', message:"No article with article number or name like: " + params[:id],data:article},status: :not_found
+    end
   end
 
   def create
@@ -51,6 +56,7 @@ class Api::V1::ArticlesController < ApplicationController
       new_nr=self.new_article_number
       params['article_number']=new_nr
       category=Category.find_by(category: params['category'])
+
       if category!=nil
         params['points']=category['points']
         params['price']=category['default_price']

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'customers', to: 'customers#index'
       post 'customers', to: 'customers#create'
-      put 'customers', to: 'customers#edit'
+      put 'customers/:id', to: 'customers#update'
       get 'customers/:id', to: 'customers#show'
       delete 'customers/:id', to: 'customers#destroy'
     end
