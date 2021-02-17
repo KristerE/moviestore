@@ -66,9 +66,9 @@ http://127.0.0.1:3000/api/v1/customers/5 Tar bort kund med id 5
 Testa projektet:
 
 kör:
-rails db:create
-rails db:migrate
-rails db:seed
+rails db:create, 
+rails db:migrate, 
+rails db:seed (skapar Kategorier, en kund och en artikel)
 
 Testa med t.ex Postman
 
